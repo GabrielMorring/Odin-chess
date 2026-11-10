@@ -1,5 +1,4 @@
 # This module handles all the saving and loading of games using FEN
-
 module FEN
   def self.saved_games
     unless Dir.exist? "saves"
@@ -37,6 +36,10 @@ module FEN
 
   def self.play_save(name)
     save_data = File.read("saves/#{name}")
-    puts save_data
+    game_from_fen(save_data)
+  end
+
+  def self.game_from_fen(fen)
+    puts fen
   end
 end
