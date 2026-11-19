@@ -10,6 +10,29 @@ class Board
   attr_accessor :grid
 
   def initialize
-    @grid = Array.new(8, Array.new(8))
+    @grid = Array.new(8) { Array.new(8) }
+
+    (0..7).each do |column|
+      @grid[column][1] = Pawn.new(self)
+      @grid[column][6] = Pawn.new(self, "black")
+    end
+
+    grid[0][0] = Rook.new(self)
+    grid[7][0] = Rook.new(self)
+    grid[1][0] = Knight.new(self)
+    grid[6][0] = Knight.new(self)
+    grid[2][0] = Bishop.new(self)
+    grid[5][0] = Bishop.new(self)
+    grid[3][0] = Queen.new(self)
+    grid[4][0] = King.new(self)
+
+    grid[0][7] = Rook.new(self, "black")
+    grid[7][7] = Rook.new(self, "black")
+    grid[1][7] = Knight.new(self, "black")
+    grid[6][7] = Knight.new(self, "black")
+    grid[2][7] = Bishop.new(self, "black")
+    grid[5][7] = Bishop.new(self, "black")
+    grid[3][7] = Queen.new(self, "black")
+    grid[4][7] = King.new(self, "black")
   end
 end

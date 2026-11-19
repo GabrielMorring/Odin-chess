@@ -9,7 +9,6 @@ class ChessGame
   end
 
   def play
-    print @board.grid
-    # display_board
+    display_board
   end
 end

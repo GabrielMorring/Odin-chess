@@ -44,25 +44,50 @@ module UI
   end
 
   def display_board
+    symbols = []
+
+    (0..7).each do |row|
+      (0..7).each do |column|
+        spot = @board.grid[column][row]
+        symbol = case spot
+                 when Pawn
+                   spot.color == "white" ? "♙" : "♟"
+                 when Rook
+                   spot.color == "white" ? "♖" : "♜"
+                 when Knight
+                   spot.color == "white" ? "♘" : "♞"
+                 when Bishop
+                   spot.color == "white" ? "♗" : "♝"
+                 when Queen
+                   spot.color == "white" ? "♕" : "♛"
+                 when King
+                   spot.color == "white" ? "♔" : "♚"
+                 else
+                   " "
+                 end
+        symbols.push(symbol)
+      end
+    end
+
     puts <<~HEREDOC
 
           a   b   c   d   e   f   g   h
         ┌───┬───┬───┬───┬───┬───┬───┬───┐
-      8 | #{} | #{} | #{} | #{} | #{} | #{} | #{} | #{} | 8
+      8 | #{symbols[56]} | #{symbols[57]} | #{symbols[58]} | #{symbols[59]} | #{symbols[60]} | #{symbols[61]} | #{symbols[62]} | #{symbols[63]} | 8
         ├───┼───┼───┼───┼───┼───┼───┼───┤
-      7 | #{} | #{} | #{} | #{} | #{} | #{} | #{} | #{} | 7
+      7 | #{symbols[48]} | #{symbols[49]} | #{symbols[50]} | #{symbols[51]} | #{symbols[52]} | #{symbols[53]} | #{symbols[54]} | #{symbols[55]} | 7
         ├───┼───┼───┼───┼───┼───┼───┼───┤
-      6 | #{} | #{} | #{} | #{} | #{} | #{} | #{} | #{} | 6
+      6 | #{symbols[40]} | #{symbols[41]} | #{symbols[42]} | #{symbols[43]} | #{symbols[44]} | #{symbols[45]} | #{symbols[46]} | #{symbols[47]} | 6
         ├───┼───┼───┼───┼───┼───┼───┼───┤
-      5 | #{} | #{} | #{} | #{} | #{} | #{} | #{} | #{} | 5
+      5 | #{symbols[32]} | #{symbols[33]} | #{symbols[34]} | #{symbols[35]} | #{symbols[36]} | #{symbols[37]} | #{symbols[38]} | #{symbols[39]} | 5
         ├───┼───┼───┼───┼───┼───┼───┼───┤
-      4 | #{} | #{} | #{} | #{} | #{} | #{} | #{} | #{} | 4
+      4 | #{symbols[24]} | #{symbols[25]} | #{symbols[26]} | #{symbols[27]} | #{symbols[28]} | #{symbols[29]} | #{symbols[30]} | #{symbols[31]} | 4
         ├───┼───┼───┼───┼───┼───┼───┼───┤
-      3 | #{} | #{} | #{} | #{} | #{} | #{} | #{} | #{} | 3
+      3 | #{symbols[16]} | #{symbols[17]} | #{symbols[18]} | #{symbols[19]} | #{symbols[20]} | #{symbols[21]} | #{symbols[22]} | #{symbols[23]} | 3
         ├───┼───┼───┼───┼───┼───┼───┼───┤
-      2 | #{} | #{} | #{} | #{} | #{} | #{} | #{} | #{} | 2
+      2 | #{symbols[8]} | #{symbols[9]} | #{symbols[10]} | #{symbols[11]} | #{symbols[12]} | #{symbols[13]} | #{symbols[14]} | #{symbols[15]} | 2
         ├───┼───┼───┼───┼───┼───┼───┼───┤
-      1 | #{} | #{} | #{} | #{} | #{} | #{} | #{} | #{} | 1
+      1 | #{symbols[0]} | #{symbols[1]} | #{symbols[2]} | #{symbols[3]} | #{symbols[4]} | #{symbols[5]} | #{symbols[6]} | #{symbols[7]} | 1
         └───┴───┴───┴───┴───┴───┴───┴───┘
           a   b   c   d   e   f   g   h
 
