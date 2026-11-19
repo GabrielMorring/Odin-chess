@@ -35,4 +35,13 @@ class Board
     grid[3][7] = Queen.new(self, "black")
     grid[4][7] = King.new(self, "black")
   end
+
+  # Takes two coordinates and returns that board location
+  def at(*coordinates)
+    @grid[coordinates.flatten[0]][coordinates.flatten[1]]
+  end
+
+  def set(value, *coordinates)
+    @grid[coordinates.flatten[0]][coordinates.flatten[1]] = value
+  end
 end

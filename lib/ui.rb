@@ -11,6 +11,34 @@ module UI
     end
   end
 
+  # Gets a coordinate from the user in the form of a6, e3, etc and converts it to a coordinate in the form of [0, 5], [4, 2] etc
+  def self.get_coordinate
+    loop do
+      input = gets.chomp.strip.to_s.downcase
+
+      unless "abcdefgh".include?(input[0]) && "12345678".include?(input[1])
+        puts "Invalid coordinate"
+        next
+      end
+
+      coordinate = []
+
+      case input[0]
+      when "a" then coordinate << 0
+      when "b" then coordinate << 1
+      when "c" then coordinate << 2
+      when "d" then coordinate << 3
+      when "e" then coordinate << 4
+      when "f" then coordinate << 5
+      when "g" then coordinate << 6
+      when "h" then coordinate << 7
+      end
+
+      coordinate << (input[1].to_i - 1)
+      return coordinate
+    end
+  end
+
   def display_menu
     puts <<~HEREDOC
 
@@ -48,7 +76,7 @@ module UI
 
     (0..7).each do |row|
       (0..7).each do |column|
-        spot = @board.grid[column][row]
+        spot = @board.at(column, row)
         symbol = case spot
                  when Pawn
                    spot.color == "white" ? "♙" : "♟"

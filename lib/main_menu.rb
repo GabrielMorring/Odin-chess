@@ -5,7 +5,7 @@ class MainMenu
   def start
     loop do
       display_menu
-      selection = UI.get_user_input(1, 2, 3, 4)
+      selection = UI.get_user_input(1, 2, 3, 4, 5)
 
       case selection.to_i
       when 1 then ChessGame.new.play
