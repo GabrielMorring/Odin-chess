@@ -7,7 +7,7 @@ module UI
       input = gets.chomp.strip.to_s
       return input if valid_inputs.flatten.any? { |x| x.to_s == input }
 
-      puts "Invalid input"
+      puts "Invalid Input"
     end
   end
 
@@ -17,7 +17,7 @@ module UI
       input = gets.chomp.strip.to_s.downcase
 
       unless "abcdefgh".include?(input[0]) && "12345678".include?(input[1])
-        puts "Invalid coordinate"
+        puts "Invalid Coordinate"
         next
       end
 
